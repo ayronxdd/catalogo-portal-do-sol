@@ -5,8 +5,6 @@ import { styles } from './stylesHome';
 import MenuLateral from './menuLateral/indexMenu'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-
-// Importando os dados e o componente da sua nova pasta
 import { COMERCIOS } from './menuLateral/dadosComercios';
 import CardsComercios from './menuLateral/cardsComercios'; 
 
@@ -49,12 +47,14 @@ export default function Home() {
         </Text>
       </View>
 
-      <ScrollView style={styles.conteudo}>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', margin: 15 }}>
-          Catálogo de Comércios - Portal do Sol
+      <ScrollView 
+        style={styles.conteudo}
+        contentContainerStyle={styles.containerInternoCards}
+      >
+        <Text style={styles.tituloCatalogo}>
+           Catálogo de Comércios - Portal do Sol
         </Text>
 
-        {/* Gerando a lista de cards dinamicamente */}
         {COMERCIOS.map((item) => (
           <CardsComercios 
             key={item.id}
@@ -66,12 +66,6 @@ export default function Home() {
           />
         ))}
       </ScrollView>
-
-      <ScrollView 
-  style={styles.conteudo} 
-  contentContainerStyle={styles.containerInternoCards} // Adicione essa linha
-></ScrollView>
-
     </View>
   );
 }

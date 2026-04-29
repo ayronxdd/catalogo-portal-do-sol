@@ -19,28 +19,29 @@ export default function MenuLateral({ visivel, onClose }: MenuProps) {
     >
       <Pressable style={styles.overlay} onPress={onClose}>
         <View style={styles.menuContainer}>
-          <Text style={styles.titulo}>Categorias</Text>
+          <Text style={styles.tituloMenu}>Categorias</Text>
 
-          <TouchableOpacity style={styles.item} onPress={() => console.log('Alimentação')}>
+          <TouchableOpacity style={styles.itemMenu} onPress={() => console.log('Alimentação')}>
             <Ionicons name="restaurant" size={24} color="#0047AB" />
             <Text style={styles.textoItem}>Alimentação</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.item} onPress={() => console.log('Serviços')}>
+          <TouchableOpacity style={styles.itemMenu} onPress={() => console.log('Serviços')}>
             <Ionicons name="construct" size={24} color="#0047AB" />
             <Text style={styles.textoItem}>Serviços</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.item} onPress={() => console.log('Saúde')}>
+          <TouchableOpacity style={styles.itemMenu} onPress={() => console.log('Saúde')}>
             <Ionicons name="medical" size={24} color="#0047AB" />
             <Text style={styles.textoItem}>Saúde</Text>
           </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => {}}>
-         <Ionicons name="basket" size={24} color="#0047AB" />
-         <Text style={styles.textoItem}>Mercados</Text>
-        </TouchableOpacity>
 
-       <TouchableOpacity style={styles.item} onPress={() => {}}>
+        <TouchableOpacity style={styles.itemMenu} onPress={() => console.log('Mercados')}>
+            <Ionicons name="basket" size={24} color="#0047AB" />
+            <Text style={styles.textoItem}>Mercados</Text>
+          </TouchableOpacity>
+
+       <TouchableOpacity style={styles.itemMenu} onPress={() => console.log('Vestuário')}>
          <Ionicons name="shirt-sharp" size={24} color="#0047AB" />
          <Text style={styles.textoItem}>Vestuário</Text>
         </TouchableOpacity>

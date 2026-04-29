@@ -2,63 +2,71 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#FFF',
+    backgroundColor: 'white',
+    width: '94%', // Para ocupar quase toda a largura da tela
     borderRadius: 12,
-    padding: 16,
+    padding: 15,
     marginVertical: 10,
-    marginHorizontal: 15,
+    alignSelf: 'center',
+    // IMPORTANTE: Remova o flexDirection: 'row' se ele estiver aqui
     
-    // Sombra para Android
+    // Sombras
     elevation: 4,
-
-    // Sombra para iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
+
   infoContainer: {
-    marginBottom: 12,
+    marginBottom: 15, // Dá espaço para os botões aparecerem embaixo
   },
+
   titulo: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
   },
+
   categoria: {
     fontSize: 14,
     color: '#0047AB',
     fontWeight: '600',
-    marginBottom: 4,
   },
+
   descricao: {
     fontSize: 14,
     color: '#666',
-    fontStyle: 'italic',
+    marginTop: 5,
   },
+
   botoesContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'row', // Faz os botões ficarem um ao lado do outro
+    justifyContent: 'space-between', // Joga um para cada ponta
     alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: '#EEE',
-    paddingTop: 12,
   },
+
   botaoZap: {
     backgroundColor: '#25D366',
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 8,
+    borderRadius: 10,
+    gap: 8,
   },
-  textoBotao: {
-    color: '#FFF',
-    fontWeight: 'bold',
-    marginLeft: 8,
-  },
+
   botaoMapa: {
-    backgroundColor: '#F0F0F0',
-    padding: 8,
-    borderRadius: 8,
-  }
+    backgroundColor: '#F0F5FF', // Um fundo leve para o ícone do mapa
+    padding: 12,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+
+  textoBotao: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 });

@@ -1,35 +1,39 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const { width } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    flexDirection: 'row',
+    backgroundColor: 'rgba(0,0,0,0.5)', // Fundo escuro semitransparente
+    justifyContent: 'flex-start',
   },
   menuContainer: {
-    width: '65%',
+    backgroundColor: 'white',
+    width: '75%', // Ocupa boa parte da largura
     height: '100%',
-    backgroundColor: '#FFFFFF',
     padding: 20,
-    paddingTop: 60,
-    elevation: 5,
+    paddingTop: 50,
+    // Sombra para dar profundidade
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 0 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+    elevation: 5,
   },
-  titulo: {
+  headerMenu: { // O ESTILO QUE ESTAVA FALTANDO
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
+    marginBottom: 15,
+  },
+  tituloMenu: {
     fontSize: 22,
     fontWeight: 'bold',
     color: '#0047AB',
-    marginBottom: 30,
-    borderBottomWidth: 1,
-    borderBottomColor: '#EEE',
-    paddingBottom: 10,
   },
-  item: {
+  itemMenu: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 15,
@@ -38,7 +42,8 @@ export const styles = StyleSheet.create({
   },
   textoItem: {
     fontSize: 16,
-    marginLeft: 10,
     color: '#333',
-  }
+    marginLeft: 15,
+    fontWeight: '500',
+  },
 });
