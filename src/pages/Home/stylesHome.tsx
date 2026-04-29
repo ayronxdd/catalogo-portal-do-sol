@@ -38,5 +38,32 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginVertical: 15,
     color: '#333',
-  }
+  },
+  searchContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: 'white',
+  borderRadius: 10,
+  paddingHorizontal: 15,
+  height: 50,
+  // Sombra
+  elevation: 5,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+},
+inputBusca: {
+  flex: 1,
+  marginLeft: 10,
+  fontSize: 16,
+  color: '#333',
+},
+divisor: {
+  height: 1,
+  backgroundColor: '#E0E0E0',
+  marginHorizontal: 20,
+  marginTop: 15,
+  marginBottom: 5,
+},
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './stylesHome';
 import MenuLateral from './menuLateral/indexMenu'; 
@@ -13,6 +13,7 @@ export default function Home() {
   const [saudacao, setSaudacao] = useState('');
   const [menuAberto, setMenuAberto] = useState(false);
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('Todas as Lojas');
+  const [busca, setBusca] = useState('');
 
   useEffect(() => {
     const carregarDadosIniciais = async () => {
@@ -27,17 +28,21 @@ export default function Home() {
     carregarDadosIniciais();
   }, []);
 
-  const comerciosFiltrados = categoriaSelecionada === 'Todas as Lojas'
-    ? COMERCIOS
-    : COMERCIOS.filter(item => item.categoria === categoriaSelecionada);
-
-  return (
+  const comerciosFiltrados = COMERCIOS.filter(item => {
+  const matchesCategoria = categoriaSelecionada === 'Todas as Lojas' || item.categoria === categoriaSelecionada;
+  const nomeSeguro = item?.nome || ""; 
+  const matchesBusca = nomeSeguro.toLowerCase().includes(busca.toLowerCase());
+  
+  return matchesCategoria && matchesBusca;
+});
+  
+    return (
     <View style={styles.container}>
       
       <MenuLateral 
         visivel={menuAberto} 
         onClose={() => setMenuAberto(false)} 
-      onSelecionarCategoria={(cat) => {
+         onSelecionarCategoria={(cat) => {
           setCategoriaSelecionada(cat);
           setMenuAberto(false);
         }}
@@ -50,11 +55,30 @@ export default function Home() {
         >
           <Ionicons name="menu" size={32} color="white" />
         </TouchableOpacity>
-        
         <Text style={styles.textoSaudacao}>
           {saudacao}, {userName}!
         </Text>
       </View>
+
+<View style={{ paddingHorizontal: 20, marginTop: 15 }}> 
+  <View style={styles.searchContainer}>
+    <Ionicons name="search" size={20} color="#888" />
+    <TextInput
+      style={styles.inputBusca}
+      placeholder="Pesquisar comércio..."
+      value={busca}
+      onChangeText={(texto) => setBusca(texto)}
+    />
+    {busca !== '' && (
+      <TouchableOpacity onPress={() => setBusca('')}>
+        <Ionicons name="close-circle" size={20} color="#888" />
+      </TouchableOpacity>
+    )}
+  </View>
+</View>
+
+<View style={styles.divisor} />
+
 
       <ScrollView 
         style={styles.conteudo}
@@ -78,3 +102,7 @@ export default function Home() {
     </View>
   );
 }
+//git add .
+//git commit -m "v0.0.3: Layout dos cards restaurado e estabilização do ambiente"
+//git tag v0.0.3
+//git push origin main --tags
