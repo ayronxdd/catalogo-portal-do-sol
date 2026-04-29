@@ -33,7 +33,7 @@ export const COMERCIOS = [
     nome: 'Pet Shop Amigão',
     categoria: 'Saúde',
     descricao: 'Banho, tosa e consultas veterinárias.',
-    whatsapp: '5584912345678', // Padronizado igual ao de cima
+    whatsapp: '5584912345678',
     linkMapa: 'https://www.google.com/maps/search/?api=1&query=Pet+Shop+Amigao+Natal+RN'
   },
 ];

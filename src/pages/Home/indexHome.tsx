@@ -12,6 +12,7 @@ export default function Home() {
   const [userName, setUserName] = useState('');
   const [saudacao, setSaudacao] = useState('');
   const [menuAberto, setMenuAberto] = useState(false);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState('Todas as Lojas');
 
   useEffect(() => {
     const carregarDadosIniciais = async () => {
@@ -26,12 +27,20 @@ export default function Home() {
     carregarDadosIniciais();
   }, []);
 
+  const comerciosFiltrados = categoriaSelecionada === 'Todas as Lojas'
+    ? COMERCIOS
+    : COMERCIOS.filter(item => item.categoria === categoriaSelecionada);
+
   return (
     <View style={styles.container}>
       
       <MenuLateral 
         visivel={menuAberto} 
         onClose={() => setMenuAberto(false)} 
+      onSelecionarCategoria={(cat) => {
+          setCategoriaSelecionada(cat);
+          setMenuAberto(false);
+        }}
       />
 
       <View style={styles.topoAzul}>
@@ -55,7 +64,7 @@ export default function Home() {
            Catálogo de Comércios - Portal do Sol
         </Text>
 
-        {COMERCIOS.map((item) => (
+        {comerciosFiltrados.map((item) => (
           <CardsComercios 
             key={item.id}
             nome={item.nome}
