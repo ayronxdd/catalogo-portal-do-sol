@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  headerMenu: { // O ESTILO QUE ESTAVA FALTANDO
+  headerMenu: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -46,4 +46,20 @@ export const styles = StyleSheet.create({
     marginLeft: 15,
     fontWeight: '500',
   },
+  badgeDistancia: {
+  position: 'absolute',
+  top: 5,           // Diminua um pouco para garantir que não sumiu para cima
+  right: 5,
+  backgroundColor: '#FF0000', // Vermelho para teste
+  paddingHorizontal: 8,
+  paddingVertical: 4,
+  borderRadius: 5,
+  zIndex: 99,       // ISSO garante que ele fique na camada de cima
+  elevation: 5,     // Necessário para Android aparecer a sombra/camada
+},
+textoDistancia: {
+  fontSize: 12,
+  fontWeight: 'bold',
+  color: '#FFFFFF', // Texto branco para contrastar com o vermelho
+},
 });

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './stylesHome';
-import MenuLateral from './menuLateral/indexMenu'; 
+import MenuLateral from '../menuLateral/indexMenu'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import * as Location from 'expo-location';
 
-import { COMERCIOS } from './menuLateral/dadosComercios';
-import CardsComercios from './menuLateral/cardsComercios'; 
+import { COMERCIOS } from '../menuLateral/dadosComercios';
+import CardsComercios from '../menuLateral/cardsComercios'; 
 
 export default function Home() {
   const [userName, setUserName] = useState('');
@@ -28,13 +29,37 @@ export default function Home() {
     carregarDadosIniciais();
   }, []);
 
-  const comerciosFiltrados = COMERCIOS.filter(item => {
-  const matchesCategoria = categoriaSelecionada === 'Todas as Lojas' || item.categoria === categoriaSelecionada;
-  const nomeSeguro = item?.nome || ""; 
-  const matchesBusca = nomeSeguro.toLowerCase().includes(busca.toLowerCase());
-  
-  return matchesCategoria && matchesBusca;
-});
+    const comerciosFiltrados = COMERCIOS.filter(item => {
+    const matchesCategoria = categoriaSelecionada === 'Todas as Lojas' || item.categoria === categoriaSelecionada;
+    const buscaLower = busca.toLowerCase();
+    const nomeLower = (item?.nome || "").toLowerCase();
+    const matchesTags = item?.tags ? item.tags.some(tag => tag.toLowerCase().includes(buscaLower)) : false;
+    const matchesNome = nomeLower.includes(buscaLower);
+    const matchesBuscaFinal = matchesNome || matchesTags;
+    
+    return matchesCategoria && matchesBuscaFinal;
+  });
+  const [location, setLocation] = useState<Location.LocationObject | null>(null);
+  useEffect(() => {
+  (async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') return;
+
+    let loc = await Location.getCurrentPositionAsync({});
+    setLocation(loc);
+  })();
+}, []);
+function calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371; // Raio da Terra em km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return (R * c).toFixed(1); // Retorna distância com 1 casa decimal
+}
   
     return (
     <View style={styles.container}>
@@ -88,21 +113,33 @@ export default function Home() {
            Catálogo de Comércios - Portal do Sol
         </Text>
 
-        {comerciosFiltrados.map((item) => (
-          <CardsComercios 
-            key={item.id}
-            nome={item.nome}
-            categoria={item.categoria}
-            descricao={item.descricao}
-            whatsapp={item.whatsapp}
-            linkMapa={item.linkMapa}
-          />
-        ))}
+        {comerciosFiltrados.map((item) => {
+          const dist = location ? calcularDistancia(
+            location.coords.latitude, 
+            location.coords.longitude, 
+            item.latitude, 
+            item.longitude
+          ) : null;
+
+          return (
+            <CardsComercios 
+              key={item.id}
+              nome={item.nome}
+              categoria={item.categoria}
+              descricao={item.descricao}
+              whatsapp={item.whatsapp}
+              linkMapa={item.linkMapa}
+              distancia={dist}
+            />
+          );
+        })} 
+
       </ScrollView>
     </View>
-  );
+  ); 
 }
+
 //git add .
-//git commit -m "v0.0.3: Layout dos cards restaurado e estabilização do ambiente"
-//git tag v0.0.3
+//git commit -m "v0.0.4: Layout dos cards restaurado e estabilização do ambiente"
+//git tag v0.0.4
 //git push origin main --tags

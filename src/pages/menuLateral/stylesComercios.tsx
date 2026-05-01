@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#FFF',
     width: '94%', // Para ocupar quase toda a largura da tela
-    borderRadius: 12,
+    borderRadius: 10,
     padding: 15,
     marginVertical: 10,
-    alignSelf: 'center',
+    position: 'relative',
     // IMPORTANTE: Remova o flexDirection: 'row' se ele estiver aqui
     
     // Sombras
@@ -69,4 +69,20 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  badgeDistancia: {
+  position: 'absolute', // Faz o selo "flutuar"
+  top: 10,
+  right: 10,
+  backgroundColor: '#E8E8E8', // Um cinza suave
+  paddingHorizontal: 8,
+  paddingVertical: 4,
+  borderRadius: 6,
+  borderWidth: 0.5,
+  borderColor: '#CCC',
+},
+textoDistancia: {
+  fontSize: 11,
+  fontWeight: 'bold',
+  color: '#0047AB', // Cor azul para destacar
+},
 });
