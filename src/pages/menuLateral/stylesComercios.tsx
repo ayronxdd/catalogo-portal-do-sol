@@ -85,4 +85,9 @@ textoDistancia: {
   fontWeight: 'bold',
   color: '#0047AB', // Cor azul para destacar
 },
+botaoFavorito: {
+  padding: 5,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
 });

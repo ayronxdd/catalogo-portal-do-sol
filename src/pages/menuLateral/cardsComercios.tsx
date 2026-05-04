@@ -10,9 +10,11 @@ interface ComercioProps {
   whatsapp: string;
   linkMapa: string;
   distancia: string | null;
+  isFavorito: boolean;
+  onFavoritar: () => void;
 }
 
-export default function CardsComercios({ nome, categoria, descricao, whatsapp, linkMapa, distancia }: ComercioProps) {
+export default function CardsComercios({ nome, categoria, descricao, whatsapp, linkMapa, distancia, isFavorito, onFavoritar }: ComercioProps) {
   
   const abrirWhatsapp = () => {
     const url = `https://wa.me/${whatsapp}?text=Olá! Vi seu anuncio no app Portal do Sol.`;
@@ -36,11 +38,20 @@ export default function CardsComercios({ nome, categoria, descricao, whatsapp, l
         <Text style={styles.categoria}>{categoria}</Text>
         <Text style={styles.descricao}>{descricao}</Text>
       </View>
+      
 
       <View style={styles.botoesContainer}>
         <TouchableOpacity style={styles.botaoZap} onPress={abrirWhatsapp}>
           <Ionicons name="logo-whatsapp" size={22} color="white" />
           <Text style={styles.textoBotao}>Pedir</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={onFavoritar} style={styles.botaoFavorito}>
+          <Ionicons 
+            name={isFavorito ? "heart" : "heart-outline"} 
+            size={24} 
+            color={isFavorito ? "#FF0000" : "#888"} 
+          />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botaoMapa} onPress={abrirMapa}>
