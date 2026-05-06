@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 10,
     position: 'relative',
-    // IMPORTANTE: Remova o flexDirection: 'row' se ele estiver aqui
     
     // Sombras
     elevation: 4,
@@ -73,7 +72,7 @@ export const styles = StyleSheet.create({
   position: 'absolute', // Faz o selo "flutuar"
   top: 10,
   right: 10,
-  backgroundColor: '#E8E8E8', // Um cinza suave
+  backgroundColor: '#E8E8E8',
   paddingHorizontal: 8,
   paddingVertical: 4,
   borderRadius: 6,
@@ -89,5 +88,24 @@ botaoFavorito: {
   padding: 5,
   justifyContent: 'center',
   alignItems: 'center',
+},
+detalhesContainer: {
+  paddingHorizontal: 15,
+  paddingBottom: 10,
+},
+divisorFino: {
+  height: 1,
+  backgroundColor: '#EEE',
+  marginVertical: 10,
+},
+textoExtra: {
+  fontSize: 13,
+  color: '#444',
+  marginBottom: 5,
+  fontFamily: 'System',
+},
+labelNegrito: {
+  fontWeight: 'bold',
+  color: '#0047AB',
 },
 });

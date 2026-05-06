@@ -9,9 +9,10 @@ export interface Comercio {
   tags: string[];
   latitude: number;
   longitude: number;
+  horario?: string;
+  endereco?: string;
 }
 
-// 2. Criamos a lista seguindo o molde
 export const COMERCIOS: Comercio[] = [
   {
     id: '1',
@@ -23,6 +24,8 @@ export const COMERCIOS: Comercio[] = [
     tags: ['frete gratis'], // Adicionei a vírgula aqui!
     latitude: -5.8448,
     longitude: -35.2094,
+    horario: '08:00 às 22:00', 
+    endereco: 'Av. Engenheiro Roberto Freire, 100'
   },
   {
     id: '2',
@@ -68,4 +71,50 @@ export const COMERCIOS: Comercio[] = [
     latitude: -5.8448,
     longitude: -35.2094,
   },
+  {
+    id: '6',
+    nome: 'Superbox Tropical',
+    categoria: 'Mercados',
+    descricao: 'Economia de verão a verão',
+    whatsapp: '84994193373',
+    linkMapa: 'https://maps.app.goo.gl/EMBSpkqaxuwUyn3q8',
+    tags: [],
+    latitude: -5.7056539,
+    longitude: -35.2360144,
+  },
+  {
+    id: '7',
+    nome: 'Delipan',
+    categoria: 'Mercados',
+    descricao: 'Tudo fresco, todo dia',
+    whatsapp: '84988948129',
+    linkMapa: 'https://maps.app.goo.gl/LYsmXAb36u7NaGKm9',
+    tags: ['padaria'],
+    latitude: -5.7054982,
+    longitude: -35.2360663,
+  },
+  {
+    id: '8',
+    nome: 'Padaria Erika Lima',
+    categoria: 'Mercados',
+    descricao: 'Melhor padaria da região',
+    whatsapp: '8498488742223',
+    linkMapa: 'https://maps.app.goo.gl/7ioBUWBGZQ1WW3YeA',
+    tags: ['padaria'],
+    latitude: -5.7051584,
+    longitude: -35.2355977,
+  },
+  {
+  id: '10',
+  nome: 'Exemplo de Loja Natal',
+  categoria: 'Saúde',
+  descricao: 'Descrição que será resumida em 2 linhas quando o card estiver fechado.',
+  whatsapp: '5584999999999',
+  latitude: -5.8123, 
+  longitude: -35.2045,
+  linkMapa: 'https://maps.app.goo.gl/...',
+  tags: ['saude', 'natal', 'farmacia'],
+  horario: 'Seg a Sex: 08h às 18h', 
+  endereco: 'Av. Engenheiro Roberto Freire, Natal/RN' 
+},
 ];
