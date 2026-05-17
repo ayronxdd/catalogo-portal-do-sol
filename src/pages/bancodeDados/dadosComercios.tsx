@@ -1,4 +1,3 @@
-// 1. Definimos o "molde" (Interface) - ISSO É OBRIGATÓRIO
 export interface Comercio {
   id: string;
   nome: string;
@@ -21,7 +20,7 @@ export const COMERCIOS: Comercio[] = [
     descricao: 'O melhor açaí da região!',
     whatsapp: '558488257815',
     linkMapa: 'https://www.google.com/maps/search/?api=1&query=Acai+do+Joao+Natal+RN',
-    tags: ['frete gratis'], // Adicionei a vírgula aqui!
+    tags: ['frete gratis'],
     latitude: -5.8448,
     longitude: -35.2094,
     horario: '08:00 às 22:00', 
@@ -35,7 +34,7 @@ export const COMERCIOS: Comercio[] = [
     whatsapp: '5584912345678',
     linkMapa: 'https://www.google.com/maps/search/?api=1&query=Pet+Shop+Amigao+Natal+RN',
     tags: [],
-    latitude: -5.8448, // Adicionei para não dar erro
+    latitude: -5.8448,
     longitude: -35.2094,
   },
   {
@@ -46,13 +45,13 @@ export const COMERCIOS: Comercio[] = [
     whatsapp: '5584981947579', 
     linkMapa: 'https://maps.app.goo.gl/sjMrVRskfYKLxnY38',
     tags: ['cerveja', 'gelo'],
-    latitude: -5.7065, // Coordenada real do link que você mandou
+    latitude: -5.7065,
     longitude: -35.2339,
   },
   {
     id: '4',
     nome: 'Gabriel Celulares',
-    categoria: 'Serviços',
+    categoria: 'Eletronicos',
     descricao: 'Oficina de reparos de celulares.',
     whatsapp: '5584921522653',
     linkMapa: 'https://www.google.com/maps/search/?api=1&query=Gabriel+Celulares+Natal+RN',

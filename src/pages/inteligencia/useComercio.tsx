@@ -10,11 +10,9 @@ export function useComercios(busca: string, categoriaSelecionada: string) {
 
   useEffect(() => {
     const carregarDados = async () => {
-      // Carrega Favoritos
       const salvos = await AsyncStorage.getItem('@favoritos');
       if (salvos) setFavoritos(JSON.parse(salvos));
 
-      // Carrega Localização
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
         let loc = await Location.getCurrentPositionAsync({});
@@ -33,7 +31,6 @@ export function useComercios(busca: string, categoriaSelecionada: string) {
     await AsyncStorage.setItem('@favoritos', JSON.stringify(novaLista));
   };
 
-  // Processamento inteligente da lista
   const comerciosFiltrados = useMemo(() => {
     return COMERCIOS.filter(item => {
       const matchesCategoria = categoriaSelecionada === 'Todas as Lojas' || 

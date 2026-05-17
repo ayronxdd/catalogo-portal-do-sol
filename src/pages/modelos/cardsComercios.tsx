@@ -41,20 +41,28 @@ export default function CardsComercios({
   return (
     <View style={styles.card}>
       <TouchableOpacity onPress={toggleExpansao} activeOpacity={0.8}>
-        {distancia && (
-          <View style={styles.badgeDistancia}>
-            <Text style={styles.textoDistancia}>{distancia} km</Text>
-          </View>
-        )}
-
         <View style={styles.infoContainer}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={styles.titulo}>{nome}</Text>
-            <Ionicons name={expandido ? "chevron-up" : "chevron-down"} size={20} color="#888" />
+          
+          {/* Linha Principal: Título + (Distância e Seta) */}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
+            
+            {/* Título com flex: 1 para não empurrar os ícones para fora da tela */}
+            <Text style={[styles.titulo, { flex: 1, marginRight: 10 }]} numberOfLines={1}>
+              {nome}
+            </Text>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              {distancia && (
+                <View style={[styles.badgeDistancia, { position: 'relative', top: 0, right: 0, marginRight: 8 }]}>
+                  <Text style={styles.textoDistancia}>{distancia} km</Text>
+                </View>
+              )}
+              <Ionicons name={expandido ? "chevron-up" : "chevron-down"} size={20} color="#888" style={{ marginLeft: 4 }}/>
+            </View>
           </View>
+          
           <Text style={styles.categoria}>{categoria}</Text>
           
-          {/* Texto de descrição limitado quando fechado e completo quando aberto */}
           <Text 
             style={styles.descricao} 
             numberOfLines={expandido ? undefined : 2}

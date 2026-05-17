@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   card: {
     backgroundColor: '#FFF',
-    width: '94%', // Para ocupar quase toda a largura da tela
+    width: '94%',
     borderRadius: 10,
     padding: 15,
     marginVertical: 10,
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
 
   infoContainer: {
-    marginBottom: 15, // Dá espaço para os botões aparecerem embaixo
+    marginBottom: 15,
   },
 
   titulo: {
@@ -40,8 +40,8 @@ export const styles = StyleSheet.create({
   },
 
   botoesContainer: {
-    flexDirection: 'row', // Faz os botões ficarem um ao lado do outro
-    justifyContent: 'space-between', // Joga um para cada ponta
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
   },
 
   botaoMapa: {
-    backgroundColor: '#F0F5FF', // Um fundo leve para o ícone do mapa
+    backgroundColor: '#F0F5FF',
     padding: 12,
     borderRadius: 10,
     borderWidth: 1,
@@ -69,20 +69,20 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   badgeDistancia: {
-  position: 'absolute', // Faz o selo "flutuar"
   top: 10,
   right: 10,
   backgroundColor: '#E8E8E8',
   paddingHorizontal: 8,
   paddingVertical: 4,
   borderRadius: 6,
+  gap: 6,
   borderWidth: 0.5,
   borderColor: '#CCC',
 },
 textoDistancia: {
   fontSize: 11,
   fontWeight: 'bold',
-  color: '#0047AB', // Cor azul para destacar
+  color: '#0047AB',
 },
 botaoFavorito: {
   padding: 5,

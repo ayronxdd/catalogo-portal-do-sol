@@ -8,7 +8,7 @@ import { useComercios } from '../inteligencia/useComercio';
 import CardsComercios from '../modelos/cardsComercios'; 
 
 export default function Home() {
-  // 1. Estados de Interface (Controlam o que o usuário interage na tela)
+  // Estados de Interface (Controlam o que o usuário interage na tela)
   const [userName, setUserName] = useState('');
   const [saudacao, setSaudacao] = useState('');
   const [menuAberto, setMenuAberto] = useState(false);
@@ -102,6 +102,6 @@ export default function Home() {
 }
 
 //git add .
-//git commit -m "v0.0.6: Adição da função de favoritos"
+//git commit -m "v0.0.7: Adição da o container expansível e inserção de horario e endereco"
 //git tag v0.0.6
 //git push origin main --tags

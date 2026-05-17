@@ -1,10 +1,9 @@
 import React from 'react';
-import { Modal, View, Text, TouchableOpacity, Pressable } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, Pressable, ScrollView } from 'react-native';
 import { styles } from './stylesMenu';
 import { Ionicons } from '@expo/vector-icons';
+import { List } from 'react-native-paper';
 
-
-// Definindo o que o menu precisa receber da Home
 interface MenuProps {
   visivel: boolean;
   onClose: () => void;
@@ -16,7 +15,7 @@ export default function MenuLateral({
   visivel, 
   onClose, 
   onSelecionarCategoria, 
-  categoriaSelecionada  // <--- Faltava isso aqui!
+  categoriaSelecionada
 }: MenuProps) {
   return (
     <Modal
@@ -25,67 +24,79 @@ export default function MenuLateral({
       animationType="fade" 
       onRequestClose={onClose}
     >
-  <Pressable style={styles.overlay} onPress={onClose}>
+      <Pressable style={styles.overlay} onPress={onClose}>
         <View style={styles.menuContainer}>
-          <Text style={styles.tituloMenu}>Categorias</Text>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Text style={styles.tituloMenu}>Categorias</Text>
 
-      <TouchableOpacity 
-            style={styles.itemMenu} 
-            onPress={() => onSelecionarCategoria('Todas as Lojas')}
-      >
-        <Ionicons name="grid-sharp" size={24} color="#0047AB" />
-          <Text style={styles.textoItem}>Todos</Text>
-        </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.itemMenu} 
+              onPress={() => { onSelecionarCategoria('Todas as Lojas'); onClose(); }}
+            >
+              <Ionicons name="grid-sharp" size={24} color="#0047AB" />
+              <Text style={styles.textoItem}>Todos</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.itemMenu} 
-           onPress={() => onSelecionarCategoria('Favoritos')}
-      >
-        <Ionicons name="heart" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Favoritos</Text>
-        </TouchableOpacity>
-      
-      <TouchableOpacity 
-        style={styles.itemMenu} 
-        onPress={() => onSelecionarCategoria('Alimentação')}
-      >
-        <Ionicons name="restaurant" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Alimentação</Text>
-      </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.itemMenu} 
+              onPress={() => { onSelecionarCategoria('Favoritos'); onClose(); }}
+            >
+              <Ionicons name="heart" size={24} color="#0047AB" />
+              <Text style={styles.textoItem}>Favoritos</Text>
+            </TouchableOpacity>
 
-      <TouchableOpacity 
-        style={styles.itemMenu} 
-        onPress={() => onSelecionarCategoria('Serviços')}
-      >
-        <Ionicons name="construct" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Serviços</Text>
-      </TouchableOpacity>
+            <List.Accordion
+              title="Alimentação"
+              titleStyle={styles.textoItem}
+              style={{ backgroundColor: 'transparent', paddingLeft: 0 }}
+              left={props => <Ionicons name="restaurant" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+            >
+              <List.Item 
+                title="Restaurantes" 
+                onPress={() => { onSelecionarCategoria('Restaurante'); onClose(); }}
+                left={props => <Ionicons name="wine-outline" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+              />
+              <List.Item 
+                title="Lanches & Delivery" 
+                onPress={() => { onSelecionarCategoria('Lanche'); onClose(); }}
+                left={props => <Ionicons name="fast-food-outline" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+              />
+            </List.Accordion>
 
-      <TouchableOpacity 
-        style={styles.itemMenu} 
-        onPress={() => onSelecionarCategoria('Saúde')}
-      >
-        <Ionicons name="medical" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Saúde</Text>
-      </TouchableOpacity>
+            <List.Accordion
+              title="Serviços"
+              titleStyle={styles.textoItem}
+              style={{ backgroundColor: 'transparent', paddingLeft: 0 }}
+              left={props => <Ionicons name="construct" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+            >
+              <List.Item 
+                title="Manutenção" 
+                onPress={() => { onSelecionarCategoria('Manutencao'); onClose(); }} 
+                left={props => <Ionicons name="hammer-outline" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+              />
+              <List.Item 
+                title="Beleza & Estética" 
+                onPress={() => { onSelecionarCategoria('Beleza'); onClose(); }} 
+                left={props => <Ionicons name="cut-outline" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+              />
+              <List.Item 
+                title="Celulares e computadores" 
+                onPress={() => { onSelecionarCategoria('Eletronicos'); onClose(); }} 
+                left={props => <Ionicons name="phone-portrait-outline" size={24} color="#0047AB" style={{ marginLeft: 10 }} />}
+              />
+            </List.Accordion>
 
-      <TouchableOpacity 
-        style={styles.itemMenu} 
-        onPress={() => onSelecionarCategoria('Mercados')}
-      >
-        <Ionicons name="basket" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Mercados</Text>
-      </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.itemMenu} 
+              onPress={() => { onSelecionarCategoria('Saúde'); onClose(); }}
+            >
+              <Ionicons name="medical" size={24} color="#0047AB" />
+              <Text style={styles.textoItem}>Saúde</Text>
+            </TouchableOpacity>
 
-      <TouchableOpacity 
-        style={styles.itemMenu} 
-        onPress={() => onSelecionarCategoria('Vestuário')}
-      >
-        <Ionicons name="shirt-sharp" size={24} color="#0047AB" />
-        <Text style={styles.textoItem}>Vestuário</Text>
-      </TouchableOpacity>
-        
-    </View>
-  </Pressable>
-</Modal>)
+          </ScrollView>
+        </View>
+      </Pressable>
+    </Modal>
+  );
 }
